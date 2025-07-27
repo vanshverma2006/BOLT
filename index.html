@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookMyShow - Movie Tickets Online</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1><i class="fas fa-ticket-alt"></i> BookMyShow</h1>
+                </div>
+                <nav class="nav">
+                    <div class="nav-links">
+                        <a href="#" data-route="home" class="nav-link active">Home</a>
+                        <a href="#" data-route="movies" class="nav-link">Movies</a>
+                        <a href="#" data-route="events" class="nav-link">Events</a>
+                        <div class="city-selector">
+                            <select id="citySelect" class="city-select">
+                                <option value="mumbai">Mumbai</option>
+                                <option value="delhi">Delhi</option>
+                                <option value="bangalore">Bangalore</option>
+                                <option value="hyderabad">Hyderabad</option>
+                                <option value="pune">Pune</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="auth-section">
+                        <div id="authButtons" class="auth-buttons">
+                            <button class="btn-secondary" id="loginBtn">Sign In</button>
+                            <button class="btn-primary" id="signupBtn">Register</button>
+                        </div>
+                        <div id="userSection" class="user-section" style="display: none;">
+                            <div class="user-menu">
+                                <button class="user-button" id="userButton">
+                                    <i class="fas fa-user"></i>
+                                    <span id="userName"></span>
+                                </button>
+                                <div class="dropdown-menu" id="userDropdown">
+                                    <a href="#" data-route="bookings"><i class="fas fa-ticket-alt"></i> My Bookings</a>
+                                    <a href="#" data-route="admin" id="adminLink" style="display: none;"><i class="fas fa-cog"></i> Admin Panel</a>
+                                    <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Home Page -->
+        <div id="homePage" class="page active">
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-content">
+                        <h1>Book Movie Tickets Online</h1>
+                        <p>Experience the best of cinema with BookMyShow. Book your tickets now!</p>
+                        <button class="btn-primary btn-large" data-route="movies">Explore Movies</button>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="featured-movies">
+                <div class="container">
+                    <h2>Featured Movies</h2>
+                    <div id="featuredMoviesGrid" class="movies-grid"></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Movies Page -->
+        <div id="moviesPage" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1>Movies</h1>
+                    <div class="filters">
+                        <select id="genreFilter" class="filter-select">
+                            <option value="">All Genres</option>
+                            <option value="action">Action</option>
+                            <option value="comedy">Comedy</option>
+                            <option value="drama">Drama</option>
+                            <option value="horror">Horror</option>
+                            <option value="romance">Romance</option>
+                            <option value="thriller">Thriller</option>
+                        </select>
+                        <select id="languageFilter" class="filter-select">
+                            <option value="">All Languages</option>
+                            <option value="hindi">Hindi</option>
+                            <option value="english">English</option>
+                            <option value="tamil">Tamil</option>
+                            <option value="telugu">Telugu</option>
+                        </select>
+                        <select id="formatFilter" class="filter-select">
+                            <option value="">All Formats</option>
+                            <option value="2D">2D</option>
+                            <option value="3D">3D</option>
+                            <option value="IMAX">IMAX</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="moviesGrid" class="movies-grid"></div>
+            </div>
+        </div>
+
+        <!-- Movie Details Page -->
+        <div id="movieDetailsPage" class="page">
+            <div class="container">
+                <div id="movieDetailsContent"></div>
+            </div>
+        </div>
+
+        <!-- Seat Selection Page -->
+        <div id="seatSelectionPage" class="page">
+            <div class="container">
+                <div id="seatSelectionContent"></div>
+            </div>
+        </div>
+
+        <!-- Booking Confirmation Page -->
+        <div id="bookingConfirmationPage" class="page">
+            <div class="container">
+                <div id="bookingConfirmationContent"></div>
+            </div>
+        </div>
+
+        <!-- My Bookings Page -->
+        <div id="bookingsPage" class="page">
+            <div class="container">
+                <h1>My Bookings</h1>
+                <div id="bookingsContent"></div>
+            </div>
+        </div>
+
+        <!-- Admin Panel -->
+        <div id="adminPage" class="page">
+            <div class="container">
+                <div class="admin-header">
+                    <h1>Admin Panel</h1>
+                    <div class="admin-tabs">
+                        <button class="tab-btn active" data-tab="movies">Movies</button>
+                        <button class="tab-btn" data-tab="theaters">Theaters</button>
+                        <button class="tab-btn" data-tab="shows">Shows</button>
+                        <button class="tab-btn" data-tab="bookings">All Bookings</button>
+                    </div>
+                </div>
+                <div id="adminContent"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="database.js"></script>
+    <script src="auth.js"></script>
+    <script src="movies.js"></script>
+    <script src="booking.js"></script>
+    <script src="admin.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
