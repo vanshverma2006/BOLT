@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookMyShow - Movie Tickets Online</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/pages.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -32,10 +34,10 @@
                     </div>
                     <div class="auth-section">
                         <div id="authButtons" class="auth-buttons">
-                            <button class="btn-secondary" id="loginBtn">Sign In</button>
-                            <button class="btn-primary" id="signupBtn">Register</button>
+                            <button class="btn btn-secondary" id="loginBtn">Sign In</button>
+                            <button class="btn btn-primary" id="signupBtn">Register</button>
                         </div>
-                        <div id="userSection" class="user-section" style="display: none;">
+                        <div id="userSection" class="user-section hidden">
                             <div class="user-menu">
                                 <button class="user-button" id="userButton">
                                     <i class="fas fa-user"></i>
@@ -43,7 +45,7 @@
                                 </button>
                                 <div class="dropdown-menu" id="userDropdown">
                                     <a href="#" data-route="bookings"><i class="fas fa-ticket-alt"></i> My Bookings</a>
-                                    <a href="#" data-route="admin" id="adminLink" style="display: none;"><i class="fas fa-cog"></i> Admin Panel</a>
+                                    <a href="#" data-route="admin" id="adminLink" class="hidden"><i class="fas fa-cog"></i> Admin Panel</a>
                                     <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
                                 </div>
                             </div>
@@ -63,7 +65,7 @@
                     <div class="hero-content">
                         <h1>Book Movie Tickets Online</h1>
                         <p>Experience the best of cinema with BookMyShow. Book your tickets now!</p>
-                        <button class="btn-primary btn-large" data-route="movies">Explore Movies</button>
+                        <button class="btn btn-primary btn-large" data-route="movies">Explore Movies</button>
                     </div>
                 </div>
             </section>
@@ -164,12 +166,26 @@
         </div>
     </div>
 
+    <!-- Toast Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p>Loading...</p>
+        </div>
+    </div>
+
     <!-- Scripts -->
-    <script src="database.js"></script>
-    <script src="auth.js"></script>
-    <script src="movies.js"></script>
-    <script src="booking.js"></script>
-    <script src="admin.js"></script>
-    <script src="main.js"></script>
+    <script src="js/database.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/movies.js"></script>
+    <script src="js/booking.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
